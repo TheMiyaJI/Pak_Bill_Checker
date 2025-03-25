@@ -115,7 +115,7 @@
         #sidebar .close-btn {
             position: absolute;
             top: 0;
-            right: 10px;
+            right: 10px; /* Close icon ko qareeb laya gaya hai */
             font-size: 36px;
             margin-left: 50px;
         }
@@ -285,28 +285,28 @@
         </header>
 
         <!-- Company Grid -->
-        <div class="company-grid">
-            <div class="company" onclick="window.location.href='https://staging.ke.com.pk:24555/'">
-                <img src="kelectric.png" alt="K-Electric">
-                <p>K-Electric</p>
-                <span>Karachi</span>
-            </div>
-            <div class="company" onclick="navigateToPage2('LESCO', 'https://bill.pitc.com.pk/lescobill/general?refno=')">
+<div class="company-grid">
+    <div class="company" onclick="window.location.href='https://staging.ke.com.pk:24555/'">
+        <img src="kelectric.png" alt="K-Electric">
+        <p>K-Electric</p>
+        <span>Karachi</span>
+    </div>
+            <div class="company" onclick="navigateToPage2('LESCO', 'https://bill.pitc.com.pk/lescobill/?refno=')">
                 <img src="lesco.png" alt="LESCO">
                 <p>LESCO</p>
                 <span>Lahore</span>
             </div>
-            <div class="company" onclick="navigateToPage2('IESCO', 'https://bill.pitc.com.pk/iescobill/general?refno=')">
+            <div class="company" onclick="navigateToPage2('IESCO', 'https://bill.pitc.com.pk/iescobill/?refno=')">
                 <img src="iesco.png" alt="IESCO">
                 <p>IESCO</p>
                 <span>Islamabad</span>
             </div>
-            <div class="company" onclick="navigateToPage2('FESCO', 'https://bill.pitc.com.pk/fescobill/general?refno=')">
+            <div class="company" onclick="navigateToPage2('FESCO', 'https://bill.pitc.com.pk/fescobill/?refno=')">
                 <img src="fesco.png" alt="FESCO">
                 <p>FESCO</p>
                 <span>Faisalabad</span>
             </div>
-            <div class="company" onclick="navigateToPage2('GEPCO', 'https://bill.pitc.com.pk/gepcobill/general?refno=')">
+            <div class="company" onclick="navigateToPage2('GEPCO', 'https://bill.pitc.com.pk/gepcobill/?refno=')">
                 <img src="gepco.png" alt="GEPCO">
                 <p>GEPCO</p>
                 <span>Gujranwala</span>
@@ -316,27 +316,27 @@
                 <p>MEPCO</p>
                 <span>Multan</span>
             </div>
-            <div class="company" onclick="navigateToPage2('PESCO', 'https://bill.pitc.com.pk/pescobill/general?refno=')">
+            <div class="company" onclick="navigateToPage2('PESCO', 'https://bill.pitc.com.pk/pescobill/?refno=')">
                 <img src="pesco.png" alt="PESCO">
                 <p>PESCO</p>
                 <span>KPK</span>
             </div>
-            <div class="company" onclick="navigateToPage2('HESCO', 'https://bill.pitc.com.pk/hescobill/general?refno=')">
+            <div class="company" onclick="navigateToPage2('HESCO', 'https://bill.pitc.com.pk/hescobill/?refno=')">
                 <img src="hesco.png" alt="HESCO">
                 <p>HESCO</p>
                 <span>Hyderabad</span>
             </div>
-            <div class="company" onclick="navigateToPage2('QESCO', 'https://bill.pitc.com.pk/qescobill/general?refno=')">
+            <div class="company" onclick="navigateToPage2('QESCO', 'https://bill.pitc.com.pk/qescobill/?refno=')">
                 <img src="qesco.png" alt="QESCO">
                 <p>QESCO</p>
                 <span>Quetta</span>
             </div>
-            <div class="company" onclick="navigateToPage2('SEPCO', 'https://bill.pitc.com.pk/sepcobill/general?refno=')">
+            <div class="company" onclick="navigateToPage2('SEPCO', 'https://bill.pitc.com.pk/sepcobill/?refno=')">
                 <img src="sepco.png" alt="SEPCO">
                 <p>SEPCO</p>
                 <span>Sukkur</span>
             </div>
-            <div class="company" onclick="navigateToPage2('TESCO', 'https://bill.pitc.com.pk/tescobill/general?refno=')">
+            <div class="company" onclick="navigateToPage2('TESCO', 'https://bill.pitc.com.pk/tescobill/?refno=')">
                 <img src="tesco.png" alt="TESCO">
                 <p>TESCO</p>
                 <span>Tribal Areas</span>
@@ -355,14 +355,12 @@
             </div>
         </header>
 
-        <form id="SubmitForm">
-            <h4>Enter Bill Reference Number</h4>
-            <input type="number" id="refNumber" placeholder="e.g., 13150001057729">
-            <div class="buttons">
-                <button type="button" id="btnSearch" onclick="navigateToPage3()">Check Bill</button>
-                <button type="button" onclick="navigateToPage1()">Back</button>
-            </div>
-        </form>
+        <h4>Enter Bill Reference Number</h4>
+        <input type="number" id="refNumber" placeholder="e.g., 13150001057729">
+        <div class="buttons">
+            <button onclick="navigateToPage3()">Check Bill</button>
+            <button onclick="navigateToPage1()">Back</button>
+        </div>
     </div>
 
     <!-- Page 3: Bill Display -->
@@ -380,15 +378,6 @@
             setTimeout(function () {
                 showAdmobAd();
             }, 12500); // 12.5 seconds delay
-            
-            // Auto-fill and submit if reference number exists
-            let savedRefNo = sessionStorage.getItem("savedRefNo");
-            if (savedRefNo) {
-                document.getElementById("refNumber").value = savedRefNo;
-                setTimeout(function() {
-                    document.getElementById("btnSearch").click();
-                }, 500);
-            }
         };
 
         // Admob Ad Function
@@ -405,7 +394,6 @@
             currentUrl = url;
             document.getElementById('main-content').style.display = 'none';
             document.getElementById('page2').style.display = 'block';
-            sessionStorage.removeItem("savedRefNo");
         }
 
         function navigateToPage1() {
@@ -417,7 +405,7 @@
             const refNumber = document.getElementById('refNumber').value;
             if (refNumber) {
                 const fullUrl = currentUrl + refNumber;
-                sessionStorage.setItem("savedRefNo", refNumber);
+                // Open in new tab
                 window.open(fullUrl, '_blank');
             } else {
                 alert('Please enter a valid reference number!');
