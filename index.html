@@ -5,55 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Electricity Bill Check</title>
     <style>
-        /* General styling */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
         }
 
-        /* Splash Screen */
-        #splash {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #003366;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
-        }
-
-        #splash h1 {
-            font-size: 24px;
-            text-align: center;
-            margin: 0;
-        }
-
-        #splash .logo {
-            width: 100px;
-            height: 100px;
-            background-color: white;
-            border-radius: 50%;
-            margin-bottom: 20px;
-        }
-
-        #splash .footer {
-            margin-top: 20px;
-            font-style: italic;
-            font-size: 14px;
-        }
-
-        /* Main content hidden initially */
+        /* Main content visible now */
         #main-content, #page2, #page3 {
             display: none;
         }
 
-        /* Header */
         header {
             background-color: #003366;
             color: white;
@@ -76,7 +38,6 @@
             margin-top: 5px;
         }
 
-        /* Menu Icon */
         .menu-icon {
             position: absolute;
             left: 10px;
@@ -85,7 +46,6 @@
             font-size: 22px;
         }
 
-        /* Sidebar */
         #sidebar {
             height: 100%;
             width: 0;
@@ -115,12 +75,10 @@
         #sidebar .close-btn {
             position: absolute;
             top: 0;
-            right: 10px; /* Close icon ko qareeb laya gaya hai */
+            right: 10px;
             font-size: 36px;
-            margin-left: 50px;
         }
 
-        /* Sidebar Header */
         #sidebar .sidebar-header {
             text-align: center;
             padding: 20px;
@@ -147,12 +105,10 @@
             color: #dcdcdc;
         }
 
-        /* Icons for menu items */
         #sidebar a i {
             margin-right: 10px;
         }
 
-        /* Grid layout for companies */
         .company-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -189,7 +145,6 @@
             font-size: 14px;
         }
 
-        /* Page 2 */
         #page2 {
             padding: 0px;
             text-align: center;
@@ -236,7 +191,6 @@
             background: #002244;
         }
 
-        /* Page 3 */
         iframe {
             width: 100%;
             height: 100vh;
@@ -250,23 +204,14 @@
 </head>
 <body>
 
-    <!-- Splash Screen -->
-    <div id="splash">
-        <img src="logo1.jpeg" alt="Logo" style="width: 100px; height: 110px; border-radius: 20%;">
-        <h1 style="margin-top: 15px; font-size: 20px;">Check Your Electricity Bill</h1>
-        <p class="footer" style="margin-top: 5px; font-size: 14px; color: #dcdcdc;">Created by Faisal Javed</p>
-    </div>
-
     <!-- Sidebar -->
     <div id="sidebar">
         <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">&times;</a>
-        <!-- Sidebar Header -->
         <div class="sidebar-header">
             <img src="logo.jpeg" alt="Logo">
             <h2>Electricity Bill Check</h2>
             <p>Easily check your electricity bill online</p>
         </div>
-        <!-- Menu Items with Icons -->
         <a href="#"><i class="fas fa-star"></i> Rate Us</a>
         <a href="#"><i class="fas fa-share-alt"></i> Share App</a>
         <a href="#"><i class="fas fa-th"></i> More Apps</a>
@@ -274,8 +219,7 @@
     </div>
 
     <!-- Page 1: Company Selection -->
-    <div id="main-content">
-        <!-- Header -->
+    <div id="main-content" style="display: block;">
         <header>
             <div class="menu-icon" onclick="openSidebar()">&#9776;</div>
             <div>
@@ -284,13 +228,12 @@
             </div>
         </header>
 
-        <!-- Company Grid -->
-<div class="company-grid">
-    <div class="company" onclick="window.location.href='https://staging.ke.com.pk:24555/'">
-        <img src="kelectric.png" alt="K-Electric">
-        <p>K-Electric</p>
-        <span>Karachi</span>
-    </div>
+        <div class="company-grid">
+            <div class="company" onclick="window.location.href='https://staging.ke.com.pk:24555/'">
+                <img src="kelectric.png" alt="K-Electric">
+                <p>K-Electric</p>
+                <span>Karachi</span>
+            </div>
             <div class="company" onclick="navigateToPage2('LESCO', 'https://bill.pitc.com.pk/pitc/route_access/')">
                 <img src="lesco.png" alt="LESCO">
                 <p>LESCO</p>
@@ -346,7 +289,6 @@
 
     <!-- Page 2: Reference Number Input -->
     <div id="page2">
-        <!-- Header -->
         <header>
             <div class="menu-icon" onclick="openSidebar()">&#9776;</div>
             <div>
@@ -367,26 +309,13 @@
     <iframe id="page3"></iframe>
 
     <script>
-        // Splash screen logic
-        window.onload = function () {
-            setTimeout(function () {
-                document.getElementById('splash').style.display = 'none';
-                document.getElementById('main-content').style.display = 'block';
-            }, 2000); // Splash screen duration: 2 seconds
+        // Show main content immediately
+        document.getElementById('main-content').style.display = 'block';
 
-            // Show Admob Ad after 12.5 seconds
-            setTimeout(function () {
-                showAdmobAd();
-            }, 12500); // 12.5 seconds delay
-        };
-
-        // Admob Ad Function
-        function showAdmobAd() {
-            (adsbygoogle = window.adsbygoogle || []).push({
-                google_ad_client: 'ca-pub-8532990939',
-                enable_page_level_ads: true
-            });
-        }
+        // Show Admob Ad after 12.5 seconds
+        setTimeout(function () {
+            showAdmobAd();
+        }, 12500);
 
         let currentUrl = '';
 
@@ -405,14 +334,12 @@
             const refNumber = document.getElementById('refNumber').value;
             if (refNumber) {
                 const fullUrl = currentUrl + refNumber;
-                // Open in new tab
                 window.open(fullUrl, '_blank');
             } else {
                 alert('Please enter a valid reference number!');
             }
         }
 
-        // Handle back navigation using browser's back button
         window.onpopstate = function(event) {
             if (document.getElementById('page3').style.display === 'block') {
                 document.getElementById('page3').style.display = 'none';
@@ -423,13 +350,19 @@
             }
         };
 
-        // Sidebar functions
         function openSidebar() {
             document.getElementById('sidebar').style.width = '250px';
         }
 
         function closeSidebar() {
             document.getElementById('sidebar').style.width = '0';
+        }
+
+        function showAdmobAd() {
+            (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: 'ca-pub-8532990939',
+                enable_page_level_ads: true
+            });
         }
     </script>
 </body>
