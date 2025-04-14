@@ -11,6 +11,7 @@
             background-color: #f5f5f5;
         }
 
+        /* Main content visible now */
         #main-content, #page2, #page3 {
             display: none;
         }
@@ -196,7 +197,9 @@
             border: none;
         }
     </style>
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Admob Ads Script -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7487419262645643" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -215,7 +218,8 @@
         <a href="https://sites.google.com/view/pakbillchecker/"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
     </div>
 
-    <div id="main-content">
+    <!-- Page 1: Company Selection -->
+    <div id="main-content" style="display: block;">
         <header>
             <div class="menu-icon" onclick="openSidebar()">&#9776;</div>
             <div>
@@ -224,9 +228,13 @@
             </div>
         </header>
 
-        <!-- Company Grid -->
-<div class="company-grid">
-    <div class="company" onclick="navigateToPage2('LESCO', 'https://bill.pitc.com.pk/pitc/route_access/')">
+        <div class="company-grid">
+            <div class="company" onclick="window.location.href='https://staging.ke.com.pk:24555/'">
+                <img src="kelectric.png" alt="K-Electric">
+                <p>K-Electric</p>
+                <span>Karachi</span>
+            </div>
+            <div class="company" onclick="navigateToPage2('LESCO', 'https://bill.pitc.com.pk/pitc/route_access/')">
                 <img src="lesco.png" alt="LESCO">
                 <p>LESCO</p>
                 <span>Lahore</span>
@@ -278,14 +286,9 @@
             </div>
         </div>
     </div>
-            <div class="company" onclick="window.location.href='https://staging.ke.com.pk:24555/'">
-                <img src="kelectric.png" alt="K-Electric">
-                <p>K-Electric</p>
-                <span>Karachi</span>
-            </div>
+
     <!-- Page 2: Reference Number Input -->
     <div id="page2">
-        <!-- Header -->
         <header>
             <div class="menu-icon" onclick="openSidebar()">&#9776;</div>
             <div>
@@ -306,13 +309,13 @@
     <iframe id="page3"></iframe>
 
     <script>
-        // Admob Ad Function
-        function showAdmobAd() {
-            (adsbygoogle = window.adsbygoogle || []).push({
-                google_ad_client: 'ca-pub-8532990939',
-                enable_page_level_ads: true
-            });
-        }
+        // Show main content immediately
+        document.getElementById('main-content').style.display = 'block';
+
+        // Show Admob Ad after 12.5 seconds
+        setTimeout(function () {
+            showAdmobAd();
+        }, 12500);
 
         let currentUrl = '';
 
@@ -331,14 +334,12 @@
             const refNumber = document.getElementById('refNumber').value;
             if (refNumber) {
                 const fullUrl = currentUrl + refNumber;
-                // Open in new tab
                 window.open(fullUrl, '_blank');
             } else {
                 alert('Please enter a valid reference number!');
             }
         }
 
-        // Handle back navigation using browser's back button
         window.onpopstate = function(event) {
             if (document.getElementById('page3').style.display === 'block') {
                 document.getElementById('page3').style.display = 'none';
@@ -349,13 +350,19 @@
             }
         };
 
-        // Sidebar functions
         function openSidebar() {
             document.getElementById('sidebar').style.width = '250px';
         }
 
         function closeSidebar() {
             document.getElementById('sidebar').style.width = '0';
+        }
+
+        function showAdmobAd() {
+            (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: 'ca-pub-8532990939',
+                enable_page_level_ads: true
+            });
         }
     </script>
 </body>
