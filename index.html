@@ -225,8 +225,6 @@
         </header>
 
         <div class="company-grid">
-            <!-- All companies remain same -->
-            <!-- Example: -->
             <div class="company" onclick="navigateToPage2('LESCO', 'https://bill.pitc.com.pk/pitc/route_access/')">
                 <img src="lesco.png" alt="LESCO">
                 <p>LESCO</p>
@@ -284,11 +282,9 @@
                 <p>K-Electric</p>
                 <span>Karachi</span>
             </div>
-            <!-- ... rest of companies as it is ... -->
-        </div>
-    </div>
-
+    <!-- Page 2: Reference Number Input -->
     <div id="page2">
+        <!-- Header -->
         <header>
             <div class="menu-icon" onclick="openSidebar()">&#9776;</div>
             <div>
@@ -304,16 +300,69 @@
             <button onclick="navigateToPage1()">Back</button>
         </div>
     </div>
+    
+<!-- Page 3: Bill Display -->
+<iframe id="page3"></iframe>
 
-    <iframe id="page3"></iframe>
+<script>
+    // Only show Admob Ad after 12.5 seconds (splash logic removed)
+    window.onload = function () {
+        setTimeout(function () {
+            showAdmobAd();
+        }, 12500); // 12.5 seconds delay
+    };
 
-    <script>
-        window.onload = function () {
+    // Admob Ad Function
+    function showAdmobAd() {
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: 'ca-pub-8532990939',
+            enable_page_level_ads: true
+        });
+    }
+
+    let currentUrl = '';
+
+    function navigateToPage2(company, url) {
+        currentUrl = url;
+        document.getElementById('main-content').style.display = 'none';
+        document.getElementById('page2').style.display = 'block';
+    }
+
+    function navigateToPage1() {
+        document.getElementById('page2').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+    }
+
+    function navigateToPage3() {
+        const refNumber = document.getElementById('refNumber').value;
+        if (refNumber) {
+            const fullUrl = currentUrl + refNumber;
+            // Open in new tab
+            window.open(fullUrl, '_blank');
+        } else {
+            alert('Please enter a valid reference number!');
+        }
+    }
+
+    // Handle back navigation using browser's back button
+    window.onpopstate = function(event) {
+        if (document.getElementById('page3').style.display === 'block') {
+            document.getElementById('page3').style.display = 'none';
+            document.getElementById('page2').style.display = 'block';
+        } else if (document.getElementById('page2').style.display === 'block') {
+            document.getElementById('page2').style.display = 'none';
             document.getElementById('main-content').style.display = 'block';
-            setTimeout(function () {
-                showAdmobAd();
-            }, 12500);
-        };
-    </script>
+        }
+    };
+
+    // Sidebar functions
+    function openSidebar() {
+        document.getElementById('sidebar').style.width = '250px';
+    }
+
+    function closeSidebar() {
+        document.getElementById('sidebar').style.width = '0';
+    }
+</script>
 </body>
 </html>
