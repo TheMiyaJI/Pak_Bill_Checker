@@ -5,16 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Electricity Bill Check</title>
     <style>
+        /* General styling */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
         }
 
+        /* Main content - removed display:none since splash is gone */
         #main-content, #page2, #page3 {
             display: none;
         }
+        #main-content {
+            display: block; /* Show main content by default now */
+        }
 
+        /* Header */
         header {
             background-color: #003366;
             color: white;
@@ -26,343 +32,42 @@
             justify-content: center;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 22px;
-        }
-
-        .tagline {
-            font-size: 14px;
-            color: #dcdcdc;
-            margin-top: 5px;
-        }
-
-        .menu-icon {
-            position: absolute;
-            left: 10px;
-            top: 5px;
-            cursor: pointer;
-            font-size: 22px;
-        }
-
-        #sidebar {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #003366;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-
-        #sidebar a {
-            padding: 10px 15px;
-            text-decoration: none;
-            font-size: 18px;
-            color: white;
-            display: block;
-            transition: 0.3s;
-        }
-
-        #sidebar a:hover {
-            background-color: #002244;
-        }
-
-        #sidebar .close-btn {
-            position: absolute;
-            top: 0;
-            right: 10px;
-            font-size: 36px;
-        }
-
-        #sidebar .sidebar-header {
-            text-align: center;
-            padding: 20px;
-            background-color: #002244;
-            margin-bottom: 20px;
-        }
-
-        #sidebar .sidebar-header img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-        }
-
-        #sidebar .sidebar-header h2 {
-            margin: 0;
-            font-size: 20px;
-            color: white;
-        }
-
-        #sidebar .sidebar-header p {
-            margin: 5px 0;
-            font-size: 14px;
-            color: #dcdcdc;
-        }
-
-        #sidebar a i {
-            margin-right: 10px;
-        }
-
-        .company-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            padding: 20px;
-        }
-
-        .company {
-            text-align: center;
-            padding: 15px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s ease-in-out;
-        }
-
-        .company:hover {
-            transform: scale(1.05);
-        }
-
-        .company img {
-            max-width: 80px;
-            margin-bottom: 10px;
-        }
-
-        .company p {
-            margin: 5px 0;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .company span {
-            color: #666;
-            font-size: 14px;
-        }
-
-        #page2 {
-            padding: 0px;
-            text-align: center;
-        }
-
-        #page2 h4 {
-            text-align: left;
-            margin-left: 15px;
-            margin-bottom: 8px;
-            font-size: 18px;
-            color: #003366;
-        }
-
-        #page2 input {
-            width: 89%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-            text-align: left;
-        }
-
-        #page2 .buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            align-items: center;
-        }
-
-        #page2 button {
-            width: 95%;
-            padding: 15px;
-            border: none;
-            border-radius: 8px;
-            background: #003366;
-            color: white;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background 0.2s;
-        }
-
-        #page2 button:hover {
-            background: #002244;
-        }
-
-        iframe {
-            width: 100%;
-            height: 100vh;
-            border: none;
-        }
+        /* ... existing code ... */
     </style>
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Admob Ads Script -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7487419262645643" crossorigin="anonymous"></script>
 </head>
 <body>
+    <!-- Removed splash screen div -->
 
+    <!-- Rest of the code remains the same -->
     <!-- Sidebar -->
     <div id="sidebar">
-        <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">&times;</a>
-        <div class="sidebar-header">
-            <img src="logo.jpeg" alt="Logo">
-            <h2>Electricity Bill Check</h2>
-            <p>Easily check your electricity bill online</p>
-        </div>
-        <a href="#"><i class="fas fa-star"></i> Rate Us</a>
-        <a href="#"><i class="fas fa-share-alt"></i> Share App</a>
-        <a href="#"><i class="fas fa-th"></i> More Apps</a>
-        <a href="https://sites.google.com/view/pakbillchecker/"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
+        <!-- ... existing code ... -->
     </div>
 
-    <div id="main-content">
-        <header>
-            <div class="menu-icon" onclick="openSidebar()">&#9776;</div>
-            <div>
-                <h1>Electricity Bill Check</h1>
-                <p class="tagline">Easily check your electricity bill online</p>
-            </div>
-        </header>
+    <!-- Rest of the HTML remains unchanged -->
 
-        <div class="company-grid">
-            <div class="company" onclick="navigateToPage2('LESCO', 'https://bill.pitc.com.pk/pitc/route_access/')">
-                <img src="lesco.png" alt="LESCO">
-                <p>LESCO</p>
-                <span>Lahore</span>
-            </div>
-            <div class="company" onclick="navigateToPage2('IESCO', 'https://bill.pitc.com.pk/pitc/route_access/')">
-                <img src="iesco.png" alt="IESCO">
-                <p>IESCO</p>
-                <span>Islamabad</span>
-            </div>
-            <div class="company" onclick="navigateToPage2('FESCO', 'https://bill.pitc.com.pk/pitc/route_access/')">
-                <img src="fesco.png" alt="FESCO">
-                <p>FESCO</p>
-                <span>Faisalabad</span>
-            </div>
-            <div class="company" onclick="navigateToPage2('GEPCO', 'https://bill.pitc.com.pk/pitc/route_access/')">
-                <img src="gepco.png" alt="GEPCO">
-                <p>GEPCO</p>
-                <span>Gujranwala</span>
-            </div>
-            <div class="company" onclick="navigateToPage2('MEPCO', 'https://bill.pitc.com.pk/pitc/route_access/')">
-                <img src="mepco.png" alt="MEPCO">
-                <p>MEPCO</p>
-                <span>Multan</span>
-            </div>
-            <div class="company" onclick="navigateToPage2('PESCO', 'https://bill.pitc.com.pk/pitc/route_access/')">
-                <img src="pesco.png" alt="PESCO">
-                <p>PESCO</p>
-                <span>KPK</span>
-            </div>
-            <div class="company" onclick="navigateToPage2('HESCO', 'https://bill.pitc.com.pk/pitc/route_access/')">
-                <img src="hesco.png" alt="HESCO">
-                <p>HESCO</p>
-                <span>Hyderabad</span>
-            </div>
-            <div class="company" onclick="navigateToPage2('QESCO', 'https://bill.pitc.com.pk/pitc/route_access/')">
-                <img src="qesco.png" alt="QESCO">
-                <p>QESCO</p>
-                <span>Quetta</span>
-            </div>
-            <div class="company" onclick="navigateToPage2('SEPCO', 'https://bill.pitc.com.pk/pitc/route_access/')">
-                <img src="sepco.png" alt="SEPCO">
-                <p>SEPCO</p>
-                <span>Sukkur</span>
-            </div>
-            <div class="company" onclick="navigateToPage2('TESCO', 'https://bill.pitc.com.pk/pitc/route_access/')">
-                <img src="tesco.png" alt="TESCO">
-                <p>TESCO</p>
-                <span>Tribal Areas</span>
-            </div>
-        </div>
-    </div>
-            <div class="company" onclick="window.location.href='https://staging.ke.com.pk:24555/'">
-                <img src="kelectric.png" alt="K-Electric">
-                <p>K-Electric</p>
-                <span>Karachi</span>
-            </div>
-    <!-- Page 2: Reference Number Input -->
-    <div id="page2">
-        <!-- Header -->
-        <header>
-            <div class="menu-icon" onclick="openSidebar()">&#9776;</div>
-            <div>
-                <h1>Electricity Bill Check</h1>
-                <p class="tagline">Easily check your electricity bill online</p>
-            </div>
-        </header>
+    <script>
+        // Modified window.onload to remove splash screen logic
+        window.onload = function () {
+            // Show Admob Ad after 12.5 seconds
+            setTimeout(function () {
+                showAdmobAd();
+            }, 12500);
+        };
 
-        <h4>Enter Bill Reference Number</h4>
-        <input type="number" id="refNumber" placeholder="e.g., 13150001057729">
-        <div class="buttons">
-            <button onclick="navigateToPage3()">Check Bill</button>
-            <button onclick="navigateToPage1()">Back</button>
-        </div>
-    </div>
-    
-<!-- Page 3: Bill Display -->
-<iframe id="page3"></iframe>
-
-<script>
-    // Only show Admob Ad after 12.5 seconds (splash logic removed)
-    window.onload = function () {
-        setTimeout(function () {
-            showAdmobAd();
-        }, 12500); // 12.5 seconds delay
-    };
-
-    // Admob Ad Function
-    function showAdmobAd() {
-        (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: 'ca-pub-8532990939',
-            enable_page_level_ads: true
-        });
-    }
-
-    let currentUrl = '';
-
-    function navigateToPage2(company, url) {
-        currentUrl = url;
-        document.getElementById('main-content').style.display = 'none';
-        document.getElementById('page2').style.display = 'block';
-    }
-
-    function navigateToPage1() {
-        document.getElementById('page2').style.display = 'none';
-        document.getElementById('main-content').style.display = 'block';
-    }
-
-    function navigateToPage3() {
-        const refNumber = document.getElementById('refNumber').value;
-        if (refNumber) {
-            const fullUrl = currentUrl + refNumber;
-            // Open in new tab
-            window.open(fullUrl, '_blank');
-        } else {
-            alert('Please enter a valid reference number!');
+        // Rest of the JavaScript functions remain unchanged
+        function showAdmobAd() {
+            (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: 'ca-pub-8532990939',
+                enable_page_level_ads: true
+            });
         }
-    }
 
-    // Handle back navigation using browser's back button
-    window.onpopstate = function(event) {
-        if (document.getElementById('page3').style.display === 'block') {
-            document.getElementById('page3').style.display = 'none';
-            document.getElementById('page2').style.display = 'block';
-        } else if (document.getElementById('page2').style.display === 'block') {
-            document.getElementById('page2').style.display = 'none';
-            document.getElementById('main-content').style.display = 'block';
-        }
-    };
-
-    // Sidebar functions
-    function openSidebar() {
-        document.getElementById('sidebar').style.width = '250px';
-    }
-
-    function closeSidebar() {
-        document.getElementById('sidebar').style.width = '0';
-    }
-</script>
+        // ... rest of your existing JavaScript code ...
+    </script>
 </body>
 </html>
