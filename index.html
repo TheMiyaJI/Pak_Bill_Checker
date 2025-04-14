@@ -306,19 +306,6 @@
     <iframe id="page3"></iframe>
 
     <script>
-        // Splash screen logic
-        window.onload = function () {
-            setTimeout(function () {
-                document.getElementById('splash').style.display = 'none';
-                document.getElementById('main-content').style.display = 'block';
-            }, 2000); // Splash screen duration: 2 seconds
-
-            // Show Admob Ad after 12.5 seconds
-            setTimeout(function () {
-                showAdmobAd();
-            }, 12500); // 12.5 seconds delay
-        };
-
         // Admob Ad Function
         function showAdmobAd() {
             (adsbygoogle = window.adsbygoogle || []).push({
