@@ -89,7 +89,7 @@
         #sidebar .sidebar-header img {
             width: 80px;
             height: 80px;
-            border-radius: 50%;
+            border-radius: 10%;
             margin-bottom: 10px;
         }
 
@@ -154,18 +154,21 @@
             text-align: left;
             margin-left: 15px;
             margin-bottom: 8px;
-            font-size: 18px;
+            font-size: clamp(16px, 5vw, 18px);
             color: #003366;
         }
 
         #page2 input {
-            width: 89%;
+            width: calc(100% - 32px);
+            max-width: 500px;
             padding: 10px;
-            margin-bottom: 20px;
+            margin: 0 auto 20px auto;
             border-radius: 8px;
             border: 1px solid #ccc;
-            font-size: 16px;
+            font-size: clamp(14px, 4vw, 16px);
             text-align: left;
+            display: block;
+            box-sizing: border-box;
         }
 
         #page2 .buttons {
@@ -173,28 +176,88 @@
             flex-direction: column;
             gap: 10px;
             align-items: center;
+            padding: 0 15px;
         }
 
         #page2 button {
-            width: 95%;
-            padding: 15px;
+            width: 100%;
+            max-width: 500px;
+            padding: clamp(10px, 3vw, 12px);
             border: none;
             border-radius: 8px;
             background: #003366;
             color: white;
             cursor: pointer;
-            font-size: 16px;
+            font-size: clamp(14px, 4vw, 16px);
             transition: background 0.2s;
+            box-sizing: border-box;
         }
 
         #page2 button:hover {
             background: #002244;
         }
 
+        @media (max-width: 600px) {
+            #page2 h4 {
+                margin-left: 10px;
+                font-size: 16px;
+            }
+
+            #page2 input {
+                width: calc(100% - 20px);
+                padding: 8px;
+                font-size: 14px;
+            }
+
+            #page2 .buttons {
+                padding: 0 10px;
+            }
+
+            #page2 button {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+
         iframe {
             width: 100%;
             height: 100vh;
             border: none;
+        }
+
+        .support-dropdown {
+            position: relative;
+        }
+
+        .support-link {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .support-link:hover {
+            background-color: #002244;
+        }
+
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            background-color: #003366;
+            transition: max-height 0.3s ease-in-out;
+        }
+
+        .dropdown-content p {
+            margin: 0;
+            padding: 10px 15px;
+            font-size: 14px;
+            color: #dcdcdc;
+        }
+
+        .support-dropdown.active .dropdown-content {
+            max-height: 200px; /* Adjust based on content size */
         }
     </style>
     <!-- Font Awesome for icons -->
@@ -212,9 +275,18 @@
             <h2>Electricity Bill Check</h2>
             <p>Easily check your electricity bill online</p>
         </div>
-        <a href="#"><i class="fas fa-star"></i> Rate Us</a>
         <a href="#"><i class="fas fa-share-alt"></i> Share App</a>
+        <a href="#"><i class="fas fa-star"></i> Rate Us</a>
         <a href="#"><i class="fas fa-th"></i> More Apps</a>
+        <a href="https://www.faisaljaved.pro"><i class="fas fa-info-circle"></i> About Us</a>
+        <a href="https://wa.me/+923298898567" target="_blank"><i class="fas fa-envelope"></i> Contact Us</a>
+        <div class="support-dropdown">
+            <a href="#" class="support-link" onclick="toggleDropdown(event)"><i class="fas fa-hand-holding-heart"></i> Support Us</a>
+            <div class="dropdown-content">
+                <p>Aap ka support is muft service ko jari rakhne aur naye projects shuru karne mein bahut ahmiyat rkhta hai. Donate ya share karein! <br> Jazz Cash: 03450357191</p>
+</p>
+            </div>
+        </div>
         <a href="https://sites.google.com/view/pakbillchecker/"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
     </div>
 
@@ -364,6 +436,12 @@
                 enable_page_level_ads: true
             });
         }
+
+        function toggleDropdown(event) {
+            event.preventDefault();
+            const dropdown = event.target.closest('.support-dropdown');
+            dropdown.classList.toggle('active');
+        }
     </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'937e924fcc804521',t:'MTc0NTkyNzMxOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'937f071c38b106f8',t:'MTc0NTkzMjEwMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
