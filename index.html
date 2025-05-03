@@ -11,7 +11,6 @@
             background-color: #f5f5f5;
         }
 
-        /* Main content visible now */
         #main-content, #page2, #page3 {
             display: none;
         }
@@ -158,6 +157,16 @@
             color: #003366;
         }
 
+        #page2 .urdu-text {
+            font-family: 'Jameel Noori Nastaleeq', Arial, sans-serif;
+            font-size: clamp(18px, 5vw, 20px);
+            color: #003366;
+            text-align: left;
+            margin-left: 15px;
+            margin-bottom: 8px;
+            direction: rtl;
+        }
+
         #page2 input {
             width: calc(100% - 32px);
             max-width: 500px;
@@ -188,7 +197,7 @@
             background: #003366;
             color: white;
             cursor: pointer;
-            font-size: clamp(14px, 4vw, 16px);
+            font-size: clamp(16px, 5vw, 18px);
             transition: background 0.2s;
             box-sizing: border-box;
         }
@@ -197,10 +206,27 @@
             background: #002244;
         }
 
+        #page2 .instruction-text {
+            font-size: clamp(18px, 5vw, 20px);
+            color: #003366;
+            text-align: center;
+            margin: 5px 0;
+        }
+
+        #page2 .instruction-text.urdu {
+            font-family: 'Jameel Noori Nastaleeq', Arial, sans-serif;
+            direction: rtl;
+        }
+
         @media (max-width: 600px) {
             #page2 h4 {
                 margin-left: 10px;
                 font-size: 16px;
+            }
+
+            #page2 .urdu-text {
+                margin-left: 10px;
+                font-size: 18px;
             }
 
             #page2 input {
@@ -215,7 +241,11 @@
 
             #page2 button {
                 padding: 10px;
-                font-size: 14px;
+                font-size: 16px;
+            }
+
+            #page2 .instruction-text {
+                font-size: 18px;
             }
         }
 
@@ -257,24 +287,87 @@
         }
 
         .support-dropdown.active .dropdown-content {
-            max-height: 200px; /* Adjust based on content size */
+            max-height: 200px;
+        }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background: linear-gradient(to bottom, #003366, #0066cc);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            margin-left: 20px;
+            margin-right: 20px;
+            max-height: 80%;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border: 2px solid white;
+        }
+
+        .popup-content h2 {
+            margin-top: 0;
+            border-bottom: 2px solid white;
+            padding-bottom: 5px;
+        }
+
+        .popup-content p {
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: white;
+            color: #003366;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .popup-button {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 20px;
+            background-color: white;
+            color: #003366;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
         }
     </style>
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Admob Ads Script -->
+    <link href="https://fonts.cdnfonts.com/css/jameel-noori-nastaleeq" rel="stylesheet">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7487419262645643" crossorigin="anonymous"></script>
 </head>
 <body>
-
-    <!-- Sidebar -->
     <div id="sidebar">
-        <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">&times;</a>
+        <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">×</a>
         <div class="sidebar-header">
             <img src="logo.jpeg" alt="Logo">
             <h2>Electricity Bill Check</h2>
             <p>Easily check your electricity bill online</p>
         </div>
+        <a href="#" onclick="showPopup()"><i class="fas fa-exclamation-circle"></i> Disclaimer</a>
         <a href="#"><i class="fas fa-share-alt"></i> Share App</a>
         <a href="#"><i class="fas fa-star"></i> Rate Us</a>
         <a href="#"><i class="fas fa-th"></i> More Apps</a>
@@ -289,16 +382,14 @@
             <a href="#" class="support-link" onclick="toggleDropdown(event)"><i class="fas fa-hand-holding-heart"></i> Support Us</a>
             <div class="dropdown-content">
                 <p>Aap ka support is muft service ko jari rakhne aur naye projects shuru karne mein bahut ahmiyat rkhta hai. Donate ya share karein! <br> Jazz Cash: 03450357191</p>
-</p>
             </div>
         </div>
         <a href="https://themiyaji.github.io/Pak_Bill_Checker/privacy-policy"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
     </div>
 
-    <!-- Page 1: Company Selection -->
     <div id="main-content" style="display: block;">
         <header>
-            <div class="menu-icon" onclick="openSidebar()">&#9776;</div>
+            <div class="menu-icon" onclick="openSidebar()">☰</div>
             <div>
                 <h1>Electricity Bill Check</h1>
                 <p class="tagline">Easily check your electricity bill online</p>
@@ -311,7 +402,7 @@
                 <p>K-Electric</p>
                 <span>Karachi</span>
             </div>
-            <div class="company" onclick="navigateToPage2('LESCO', 'https://bill.pitc.com.pk/pitc/route_access/')">
+            <div class="company" onclick="navigateToPage2('LESCO', 'http://www.lesco.gov.pk:36247/Bill.aspx')">
                 <img src="lesco.png" alt="LESCO">
                 <p>LESCO</p>
                 <span>Lahore</span>
@@ -364,39 +455,55 @@
         </div>
     </div>
 
-    <!-- Page 2: Reference Number Input -->
     <div id="page2">
         <header>
-            <div class="menu-icon" onclick="openSidebar()">&#9776;</div>
+            <div class="menu-icon" onclick="openSidebar()">☰</div>
             <div>
                 <h1>Electricity Bill Check</h1>
                 <p class="tagline">Easily check your electricity bill online</p>
             </div>
         </header>
 
-        <h4>Enter Bill Reference Number</h4>
-        <input type="number" id="refNumber" placeholder="Enter your consumer i'd (14 digits)">
+        <h4>Enter your correct Reference Number</h4>
+        <input type="text" id="refNumber" placeholder="Enter your consumer id">
         <div class="buttons">
             <button onclick="navigateToPage3()">Check Bill</button>
             <button onclick="navigateToPage1()">Back</button>
+            <p class="instruction-text urdu">اگر آپ کو بجلی کا بل نا ملیں تو دوبارہ کوشش کریں</p>
         </div>
     </div>
 
-    <!-- Page 3: Bill Display -->
     <iframe id="page3"></iframe>
 
+    <div class="popup-overlay" id="disclaimerPopup">
+        <div class="popup-content">
+            <button class="popup-close" onclick="closePopup()">×</button>
+            <h2>DISCLAIMER</h2>
+            <p>
+                The app doesn't represent a government entity. Our app is merely a source of showing electricity bills to the users for their convenience. We only serve the purpose of an online electricity bill viewer.
+            </p>
+            <p>
+                Our app is solely made for the convenience of user. The Data shown in the app is available online for the general public. The information presented in this application about Electricity Bill is taken from different websites Online is taken directly from the respective websites of the concerned Sites.
+            </p>
+            <p>
+                The author of this application assumes no liability or responsibility for any errors or omissions in the content thus displayed and it does not reflect the genuineness of the bill or its documents / information. The Information presented is not applicable for any court and there is no responsibility of Developers/Software owner in any case or accident.
+            </p>
+            <a href="#" class="popup-button">VISIT OUR MORE APPS</a>
+        </div>
+    </div>
+
     <script>
-        // Show main content immediately
         document.getElementById('main-content').style.display = 'block';
 
-        // Show Admob Ad after 12.5 seconds
         setTimeout(function () {
             showAdmobAd();
         }, 12500);
 
         let currentUrl = '';
+        let currentCompany = '';
 
         function navigateToPage2(company, url) {
+            currentCompany = company;
             currentUrl = url;
             document.getElementById('main-content').style.display = 'none';
             document.getElementById('page2').style.display = 'block';
@@ -408,12 +515,24 @@
         }
 
         function navigateToPage3() {
-            const refNumber = document.getElementById('refNumber').value;
-            if (refNumber) {
-                const fullUrl = currentUrl + refNumber;
+            const refNumber = document.getElementById('refNumber').value.trim();
+            if (currentCompany === 'LESCO') {
+                if (!/^\d{6,21}$/.test(refNumber)) {
+                    alert('Please enter a valid 14-digit reference number for Bill Check!');
+                    return;
+                }
+                const batchNo = refNumber.substring(0, 2);
+                const subDiv = refNumber.substring(2, 7);
+                const refNo = refNumber.substring(7);
+                const fullUrl = `${currentUrl}?BatchNo=${batchNo}&SubDiv=${subDiv}&RefNo=${refNo}&RU=U&CapCode=QAED`;
                 window.open(fullUrl, '_blank');
             } else {
-                alert('Please enter a valid reference number!');
+                if (!refNumber) {
+                    alert('Please enter a valid reference number!');
+                    return;
+                }
+                const fullUrl = currentUrl + refNumber;
+                window.open(fullUrl, '_blank');
             }
         }
 
@@ -447,6 +566,14 @@
             const dropdown = event.target.closest('.support-dropdown');
             dropdown.classList.toggle('active');
         }
+
+        function showPopup() {
+            document.getElementById('disclaimerPopup').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('disclaimerPopup').style.display = 'none';
+        }
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'937e924fcc804521',t:'MTc0NTkyNzMxOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'937f071c38b106f8',t:'MTc0NTkzMjEwMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
