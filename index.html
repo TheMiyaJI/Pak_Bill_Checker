@@ -112,7 +112,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
-            padding:  Barlow Condensed, sans-serif;
+            padding: 20px;
         }
 
         .company {
@@ -437,7 +437,7 @@
                 <p>HESCO</p>
                 <span>Hyderabad</span>
             </div>
-            <div class="company" onclick Prospective Students
+            <div class="company" onclick="navigateToPage2('QESCO', 'https://bill.pitc.com.pk/pitc/route_access/')">
                 <img src="qesco.png" alt="QESCO">
                 <p>QESCO</p>
                 <span>Quetta</span>
@@ -516,7 +516,6 @@
 
         function navigateToPage3() {
             const refNumber = document.getElementById('refNumber').value.trim();
-            
             if (currentCompany === 'LESCO') {
                 if (!/^\d{6,21}$/.test(refNumber)) {
                     alert('Please enter a valid 14-digit reference number for Bill Check!');
@@ -526,77 +525,18 @@
                 const subDiv = refNumber.substring(2, 7);
                 const refNo = refNumber.substring(7);
                 const fullUrl = `${currentUrl}?BatchNo=${batchNo}&SubDiv=${subDiv}&RefNo=${refNo}&RU=U&CapCode=QAED`;
-                window.open(fullUrl, '_blank');
-            } else if (currentCompany === 'IESCO') {
-                if (!/^\d{7,14}$/.test(refNumber)) {
-                    alert('Please enter a valid 7 to 14-digit reference number for IESCO!');
-                    return;
-                }
-                const fullUrl = `${currentUrl}${refNumber}`;
-                window.open(fullUrl, '_blank');
-            } else if (currentCompany === 'FESCO') {
-                if (!/^\d{7,14}$/.test(refNumber)) {
-                    alert('Please enter a valid 7 to 14-digit reference number for FESCO!');
-                    return;
-                }
-                const fullUrl = `${currentUrl}${refNumber}`;
-                window.open(fullUrl, '_blank');
-            } else if (currentCompany === 'GEPCO') {
-                if (!/^\d{7,14}$/.test(refNumber)) {
-                    alert('Please enter a valid 7 to 14-digit reference number for GEPCO!');
-                    return;
-                }
-                const fullUrl = `${currentUrl}${refNumber}`;
-                window.open(fullUrl, '_blank');
-            } else if (currentCompany === 'MEPCO') {
-                if (!/^\d{7,14}$/.test(refNumber)) {
-                    alert('Please enter a valid 7 to 14-digit reference number for MEPCO!');
-                    return;
-                }
-                const fullUrl = `${currentUrl}${refNumber}`;
-                window.open(fullUrl, '_blank');
-            } else if (currentCompany === 'PESCO') {
-                if (!/^\d{7,14}$/.test(refNumber)) {
-                    alert('Please enter a valid 7 to 14-digit reference number for PESCO!');
-                    return;
-                }
-                const fullUrl = `${currentUrl}${refNumber}`;
-                window.open(fullUrl, '_blank');
-            } else if (currentCompany === 'HESCO') {
-                if (!/^\d{7,14}$/.test(refNumber)) {
-                    alert('Please enter a valid 7 to 14-digit reference number for HESCO!');
-                    return;
-                }
-                const fullUrl = `${currentUrl}${refNumber}`;
-                window.open(fullUrl, '_blank');
-            } else if (currentCompany === 'QESCO') {
-                if (!/^\d{7,14}$/.test(refNumber)) {
-                    alert('Please enter a valid 7 to 14-digit reference number for QESCO!');
-                    return;
-                }
-                const fullUrl = `${currentUrl}${refNumber}`;
-                window.open(fullUrl, '_blank');
-            } else if (currentCompany === 'SEPCO') {
-                if (!/^\d{7,14}$/.test(refNumber)) {
-                    alert('Please enter a valid 7 to 14-digit reference number for SEPCO!');
-                    return;
-                }
-                const fullUrl = `${currentUrl}${refNumber}`;
-                window.open(fullUrl, '_blank');
-            } else if (currentCompany === 'TESCO') {
-                if (!/^\d{7,14}$/.test(refNumber)) {
-                    alert('Please enter a valid 7 to 14-digit reference number for TESCO!');
-                    return;
-                }
-                const fullUrl = `${currentUrl}${refNumber}`;
-                window.open(fullUrl, '_blank');
+                document.getElementById('page2').style.display = 'none';
+                document.getElementById('page3').style.display = 'block';
+                document.getElementById('page3').src = fullUrl;
             } else {
                 if (!refNumber) {
                     alert('Please enter a valid reference number!');
                     return;
                 }
                 const fullUrl = currentUrl + refNumber;
-                window.open(fullUrl, '_blank');
+                document.getElementById('page2').style.display = 'none';
+                document.getElementById('page3').style.display = 'block';
+                document.getElementById('page3').src = fullUrl;
             }
         }
 
@@ -639,7 +579,6 @@
             document.getElementById('disclaimerPopup').style.display = 'none';
         }
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b
-
-.createElement('script');d.innerHTML="window.__CF$cv$params={r:'939f852e9d4cdd21',t:'MTc0NjI3MjgxMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'939f90752b4f44e8',t:'MTc0NjI3MzI3My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
 </html>
