@@ -389,6 +389,11 @@
     });
   }
 </script>
+    <script>
+  function openExternal(url) {
+    window.open(url, '_system');
+  }
+</script>
 </head>
 <body>
     <div id="sidebar">
@@ -405,7 +410,9 @@
 <a href="https://play.google.com/store/apps/developer?id=Miya+ji" target="_blank" rel="noopener noreferrer">
   <i class="fas fa-th"></i> More Apps
 </a>
-        <a href="https://www.faisaljaved.pro"target="_blank" ><i class="fas fa-info-circle"></i> About Us</a>
+<a href="#" onclick="openExternal('https://www.faisaljaved.pro')">
+  <i class="fas fa-info-circle"></i> About Us
+</a>
         <div class="support-dropdown">
             <a href="#" class="support-link" onclick="toggleDropdown(event)"><i class="fas fa-envelope"></i> Contact Us</a>
             <div class="dropdown-content">
