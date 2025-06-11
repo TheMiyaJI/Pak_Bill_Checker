@@ -358,6 +358,37 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.cdnfonts.com/css/jameel-noori-nastaleeq" rel="stylesheet">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7487419262645643" crossorigin="anonymous"></script>
+    <script>
+  function shareApp() {
+    const appLink = "https://play.google.com/store/apps/details?id=com.faisal.pakbillchecker";
+
+    // Try to use Web Share API (mobile browsers mostly support this)
+    if (navigator.share) {
+      navigator.share({
+        title: "Pak Bill Checker App",
+        text: "Check all electricity bills in Pakistan instantly.",
+        url: appLink
+      }).then(() => {
+        copyToClipboard(appLink);
+        alert("Link copied to clipboard!");
+      }).catch((error) => {
+        console.error("Share failed:", error);
+        copyToClipboard(appLink);
+        alert("Link copied to clipboard!");
+      });
+    } else {
+      // Fallback for desktop browsers
+      copyToClipboard(appLink);
+      alert("Link copied to clipboard!");
+    }
+  }
+
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).catch(err => {
+      console.error('Failed to copy text: ', err);
+    });
+  }
+</script>
 </head>
 <body>
     <div id="sidebar">
@@ -368,9 +399,10 @@
             <p>Easily check your electricity bill online</p>
         </div>
         <a href="#" onclick="showPopup()"><i class="fas fa-exclamation-circle"></i> Disclaimer</a>
-        <a href="#"><i class="fas fa-share-alt"></i> Share App</a>
-        <a href="#"><i class="fas fa-star"></i> Rate Us</a>
-        <a href="#"><i class="fas fa-th"></i> More Apps</a>
+<a href="#" onclick="shareApp(); return false;">
+  <i class="fas fa-share-alt"></i> Share App
+</a>        <a href="#"><i class="fas fa-star"></i> Rate Us</a>
+        <a href="https://play.google.com/store/apps/developer?id=Miya+ji"><i class="fas fa-th"></i> More Apps</a>
         <a href="https://www.faisaljaved.pro"><i class="fas fa-info-circle"></i> About Us</a>
         <div class="support-dropdown">
             <a href="#" class="support-link" onclick="toggleDropdown(event)"><i class="fas fa-envelope"></i> Contact Us</a>
@@ -493,7 +525,7 @@
             <p>
                 The author of this application assumes no liability or responsibility for any errors or omissions in the content thus displayed and it does not reflect the genuineness of the bill or its documents / information. The Information presented is not applicable for any court and there is no responsibility of Developers/Software owner in any case or accident.
             </p>
-            <a href="#" class="popup-button">VISIT OUR MORE APPS</a>
+            <a href="https://play.google.com/store/apps/developer?id=Miya+ji" class="popup-button">VISIT OUR MORE APPS</a>
         </div>
     </div>
 
